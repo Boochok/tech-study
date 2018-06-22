@@ -50,11 +50,12 @@ public class MyLinkedListTest {
     public void testDelete() {
         assertEquals(list.length(), 4);
         assertEquals(list.delete(2), "several");
+        assertEquals(list.get(2), "words");
         assertEquals(list.length(), 3);
         assertEquals(list.delete(0), "let's");
         assertEquals(list.delete(list.length()-1), "words");
-        assertEquals(list.length(), 1);
-
+        assertEquals(list.head(), "sketch out");
+        assertEquals(list.tail(), "sketch out");
     }
 
     @Test(expectedExceptions = IndexOutOfBoundsException.class)

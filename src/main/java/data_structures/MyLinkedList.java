@@ -78,7 +78,6 @@ public class MyLinkedList<T> {
         T deletedValue = currentNode.value;
         currentNode.next.prev = currentNode.prev;
         currentNode.prev.next = currentNode.next;
-        currentNode = null;
         indexCounter--;
         return deletedValue;
     }
