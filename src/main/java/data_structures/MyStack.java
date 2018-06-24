@@ -1,7 +1,7 @@
 package data_structures;
 
 
-public class MyStack<T> {
+public class MyStack<T> implements Stack<T> {
 
     private Object[] elements;
     private int currentElement;
@@ -10,8 +10,9 @@ public class MyStack<T> {
         elements = new Object[10];
     }
 
+    @Override
     public void push(T element) {
-        if(currentElement == (int)(elements.length * 0.75)) {
+        if (currentElement == (int) (elements.length * 0.75)) {
             copyArray();
         }
         elements[currentElement++] = element;
@@ -24,15 +25,18 @@ public class MyStack<T> {
     }
 
     @SuppressWarnings("unchecked cast")
+    @Override
     public T pop() {
         return (T) elements[--currentElement];
     }
 
+    @Override
     public boolean isEmpty() {
         return currentElement == 0;
     }
 
-    public int length() {
+    @Override
+    public int size() {
         return currentElement;
     }
 }
