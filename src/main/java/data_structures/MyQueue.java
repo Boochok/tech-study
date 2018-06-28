@@ -1,7 +1,5 @@
 package data_structures;
 
-import java.util.Iterator;
-
 public class MyQueue<T> {
 
     Node<T> head;
@@ -9,63 +7,41 @@ public class MyQueue<T> {
     int nodeCounter;
 
     public int size() {
-        return 0;
+        return nodeCounter;
     }
 
     public boolean isEmpty() {
-        return false;
-    }
-
-    public boolean contains(T o) {
-        return false;
-    }
-
-    public Iterator iterator() {
-        return null;
+        return nodeCounter == 0;
     }
 
     public boolean add(T element) {
-        Node<T> newbie;
+        Node<T> newbie =  new Node<>(element, null);
         if (head == null) {
-            newbie = new Node<>(element, head);
             head = newbie;
-            head.prev = newbie;
             tail = newbie;
-            nodeCounter++;
         } else {
-            newbie = new Node<>(element, tail);
-//            newbie = new Node<>(element, tail);
+            tail.next = newbie;
             tail = newbie;
         }
+        nodeCounter++;
         return false;
     }
 
     public T remove() {
         T element = head.element;
-        head = head.prev;
+        head = head.next;
+        nodeCounter--;
         return element;
-    }
-
-    public T poll() {
-        return null;
-    }
-
-    public T element() {
-        return null;
-    }
-
-    public T peek() {
-        return null;
     }
 
     private class Node<T> {
 
         T element;
-        Node<T> prev;
+        Node<T> next;
 
-        public Node(T element, Node<T> prev) {
+        public Node(T element, Node<T> next) {
             this.element = element;
-            this.prev = prev;
+            this.next = next;
         }
     }
 }
