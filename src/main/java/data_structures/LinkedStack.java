@@ -1,6 +1,6 @@
 package data_structures;
 
-public class MyLinkedStack<T> implements Stack<T> {
+public class LinkedStack<T> implements Stack<T> {
 
     private int nodeCounter;
     private Node<T> currentNode;
@@ -19,8 +19,12 @@ public class MyLinkedStack<T> implements Stack<T> {
 
     @Override
     public T pop() {
+        if(nodeCounter == 0)
+            throw new IndexOutOfBoundsException("Stack is empty");
         nodeCounter--;
-        return currentNode.value;
+        T result = currentNode.value;
+        currentNode = currentNode.prev;
+        return result;
     }
 
     @Override

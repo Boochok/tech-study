@@ -1,12 +1,12 @@
 package data_structures;
 
 
-public class MyStack<T> implements Stack<T> {
+public class ArrayStack<T> implements Stack<T> {
 
     private Object[] elements;
     private int currentElement;
 
-    public MyStack() {
+    public ArrayStack() {
         elements = new Object[10];
     }
 

@@ -2,9 +2,9 @@ package data_structures;
 
 public class MyQueue<T> {
 
-    Node<T> head;
-    Node<T> tail;
-    int nodeCounter;
+    private Node<T> head;
+    private Node<T> tail;
+    private int nodeCounter;
 
     public int size() {
         return nodeCounter;
@@ -27,6 +27,8 @@ public class MyQueue<T> {
     }
 
     public T remove() {
+        if(nodeCounter == 0)
+            throw new IndexOutOfBoundsException("Queue is empty");
         T element = head.element;
         head = head.next;
         nodeCounter--;
