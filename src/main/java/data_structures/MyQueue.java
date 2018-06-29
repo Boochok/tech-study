@@ -14,7 +14,7 @@ public class MyQueue<T> {
         return nodeCounter == 0;
     }
 
-    public boolean add(T element) {
+    public void add(T element) {
         Node<T> newbie =  new Node<>(element, null);
         if (head == null) {
             head = newbie;
@@ -24,7 +24,6 @@ public class MyQueue<T> {
             tail = newbie;
         }
         nodeCounter++;
-        return false;
     }
 
     public T remove() {
