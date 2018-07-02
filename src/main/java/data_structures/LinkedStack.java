@@ -37,6 +37,13 @@ public class LinkedStack<T> implements Stack<T> {
         return nodeCounter;
     }
 
+    @Override
+    public T peek() {
+        if(nodeCounter == 0)
+            throw new IndexOutOfBoundsException("Stack is empty");
+        return currentNode.value;
+    }
+
     private class Node<T> {
 
         T value;

@@ -39,4 +39,10 @@ public class ArrayStack<T> implements Stack<T> {
     public int size() {
         return currentElement;
     }
+
+    @SuppressWarnings("unchecked cast")
+    @Override
+    public T peek() {
+        return (T) elements[currentElement-1];
+    }
 }
