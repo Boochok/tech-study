@@ -7,9 +7,9 @@ public class MyLinkedList<T> {
 
     private Node<T> head;
     private Node<T> tail;
-    private int indexCounter;
+    private int size;
 
-    public boolean add(T element) {
+    public void add(T element) {
         Node<T> newbie;
         if (head == null && tail == null) {
             newbie = new Node<>(element);
@@ -24,16 +24,15 @@ public class MyLinkedList<T> {
             tail.next = head;
             head.prev = tail;
         }
-        indexCounter++;
-        return true;
+        size++;
     }
 
     public T get(int index) {
-        if (index >= indexCounter || index < 0)
+        if (index >= size || index < 0)
             throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, length()));
         Node<T> currentNode;
         int nodeCount;
-        if (index < indexCounter / 2) {
+        if (index < size / 2) {
             currentNode = head;
             nodeCount = 0;
             while (nodeCount++ != index) {
@@ -41,7 +40,7 @@ public class MyLinkedList<T> {
             }
         } else {
             currentNode = tail;
-            nodeCount = indexCounter;
+            nodeCount = size;
             while (--nodeCount != index) {
                 currentNode = currentNode.prev;
             }
@@ -58,11 +57,11 @@ public class MyLinkedList<T> {
     }
 
     public T delete(int index) {
-        if (index >= indexCounter || index < 0)
+        if (index >= size || index < 0)
             throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, length()));
         Node<T> currentNode;
         int nodeCount;
-        if (index < indexCounter / 2) {
+        if (index < size / 2) {
             currentNode = head;
             nodeCount = 0;
             while (nodeCount++ != index) {
@@ -70,7 +69,7 @@ public class MyLinkedList<T> {
             }
         } else {
             currentNode = tail;
-            nodeCount = indexCounter;
+            nodeCount = size;
             while (--nodeCount != index) {
                 currentNode = currentNode.prev;
             }
@@ -80,14 +79,14 @@ public class MyLinkedList<T> {
         currentNode.prev.next = currentNode.next;
         if (index == 0)
             head = currentNode.next;
-        if (index == indexCounter - 1)
+        if (index == size - 1)
             tail = currentNode.prev;
-        indexCounter--;
+        size--;
         return deletedValue;
     }
 
     public int length() {
-        return indexCounter;
+        return size;
     }
 
     private class Node<T> {

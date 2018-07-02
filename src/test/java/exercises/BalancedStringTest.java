@@ -12,5 +12,6 @@ public class BalancedStringTest {
         assertFalse(BalancedString.isBalanced("(.{.).}"));
         assertFalse(BalancedString.isBalanced(".)__{..[...[....]...]..}.)"));
         assertTrue(BalancedString.isBalanced("(.)__{.[..[...]..].}"));
+        assertTrue(BalancedString.isBalanced("абвгд()"));
     }
 }

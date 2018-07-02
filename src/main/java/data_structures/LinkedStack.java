@@ -2,26 +2,26 @@ package data_structures;
 
 public class LinkedStack<T> implements Stack<T> {
 
-    private int nodeCounter;
+    private int size;
     private Node<T> currentNode;
 
     @Override
     public void push(T element) {
         Node<T> newbie;
-        if (nodeCounter == 0) {
+        if (size == 0) {
             newbie = new Node<>(element, null);
         } else {
             newbie = new Node<>(element, currentNode);
         }
         currentNode = newbie;
-        nodeCounter++;
+        size++;
     }
 
     @Override
     public T pop() {
-        if(nodeCounter == 0)
+        if(size == 0)
             throw new IndexOutOfBoundsException("Stack is empty");
-        nodeCounter--;
+        size--;
         T result = currentNode.value;
         currentNode = currentNode.prev;
         return result;
@@ -29,17 +29,17 @@ public class LinkedStack<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return nodeCounter == 0;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return nodeCounter;
+        return size;
     }
 
     @Override
     public T peek() {
-        if(nodeCounter == 0)
+        if(size == 0)
             throw new IndexOutOfBoundsException("Stack is empty");
         return currentNode.value;
     }

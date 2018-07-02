@@ -4,7 +4,7 @@ package data_structures;
 public class ArrayStack<T> implements Stack<T> {
 
     private Object[] elements;
-    private int currentElement;
+    private int size;
 
     public ArrayStack() {
         elements = new Object[10];
@@ -12,37 +12,37 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public void push(T element) {
-        if (currentElement == (int) (elements.length * 0.75)) {
+        if (size == (int) (elements.length * 0.75)) {
             copyArray();
         }
-        elements[currentElement++] = element;
+        elements[size++] = element;
     }
 
     private void copyArray() {
         Object[] newElements = new Object[elements.length * 2];
-        System.arraycopy(elements, 0, newElements, 0, currentElement);
+        System.arraycopy(elements, 0, newElements, 0, size);
         elements = newElements;
     }
 
     @SuppressWarnings("unchecked cast")
     @Override
     public T pop() {
-        return (T) elements[--currentElement];
+        return (T) elements[--size];
     }
 
     @Override
     public boolean isEmpty() {
-        return currentElement == 0;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return currentElement;
+        return size;
     }
 
     @SuppressWarnings("unchecked cast")
     @Override
     public T peek() {
-        return (T) elements[currentElement-1];
+        return (T) elements[size -1];
     }
 }

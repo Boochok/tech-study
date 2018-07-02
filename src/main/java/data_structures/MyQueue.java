@@ -4,14 +4,14 @@ public class MyQueue<T> {
 
     private Node<T> head;
     private Node<T> tail;
-    private int nodeCounter;
+    private int size;
 
     public int size() {
-        return nodeCounter;
+        return size;
     }
 
     public boolean isEmpty() {
-        return nodeCounter == 0;
+        return size == 0;
     }
 
     public void add(T element) {
@@ -23,15 +23,15 @@ public class MyQueue<T> {
             tail.next = newbie;
             tail = newbie;
         }
-        nodeCounter++;
+        size++;
     }
 
     public T remove() {
-        if(nodeCounter == 0)
+        if(size == 0)
             throw new IndexOutOfBoundsException("Queue is empty");
         T element = head.element;
         head = head.next;
-        nodeCounter--;
+        size--;
         return element;
     }
 
